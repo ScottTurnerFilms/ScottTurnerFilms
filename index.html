@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Scott Turner Films</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#06b6d4;--text:#e6eef6}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:linear-gradient(180deg,#071126 0%,var(--bg) 100%);color:var(--text)}
+    .container{width:min(720px,94vw);text-align:center;padding:32px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+   .avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  display: block;
+  margin: 10px auto;
+  object-fit: cover;
+}
+    h1{margin:12px 0 6px;font-size:1.5rem}
+    p.desc{margin:0 0 18px;color:rgba(230,238,246,0.75)}
+    .links{display:grid;gap:12px;padding:10px 14px;max-width:520px;margin:0 auto}
+    .link-btn{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.005));border:1px solid rgba(255,255,255,0.03);color:var(--text);text-decoration:none;font-weight:600;transition:transform .12s ease, box-shadow .12s ease}
+    .link-btn:focus,.link-btn:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+    .meta{font-size:.9rem;color:rgba(230,238,246,0.75)}
+    .icon{width:36px;height:36px;border-radius:8px;display:inline-grid;place-items:center;background:rgba(255,255,255,0.03)}
+    .row{display:flex;gap:10px;justify-content:center;margin-top:18px}
+    button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--text);cursor:pointer}
+    @media (prefers-reduced-motion:reduce){.link-btn{transition:none}}
+  </style>
+</head>
+<body>
+  <main class="container" role="main">
+    <img src="me.jpeg" alt="Scott's portrait" class="avatar" />
+    <h1>Hi — I'm Scott Turner</h1>
+    <p class="desc">A small hub for my portfolio and resume. Click a button to open links.</p>
+
+    <div class="links" role="navigation" aria-label="Site links">
+      <!-- Portfolio button: leads to updated Wix site -->
+      <a class="link-btn" href="https://scottyboy2154.wixsite.com/film" target="_blank" rel="noopener noreferrer" title="Open Portfolio">
+        <span style="display:flex;align-items:center;gap:12px">
+          <span class="icon">🎬</span>
+          <span>Portfolio</span>
+        </span>
+        <span class="meta">External</span>
+      </a>
+
+      <!-- Resume button -->
+      <a class="link-btn" href="./resume.pdf" target="_blank" rel="noopener noreferrer" download="Resume.pdf" title="Download or open resume">
+        <span style="display:flex;align-items:center;gap:12px">
+          <span class="icon">📄</span>
+          <span>Resume</span>
+        </span>
+        <span class="meta">Download</span>
+      </a>
+
+      <!-- Email button -->
+      <a class="link-btn" href="ScottTurnerFilms@gmail.com" title="Email me">
+        <span style="display:flex;align-items:center;gap:12px">
+          <span class="icon">✉️</span>
+          <span>Email</span>
+        </span>
+        <span class="meta">ScottTurnerFilms@gmail.com</span>
+      </a>
+    </div>
+
+    <div class="row">
+      <button class="ghost" onclick="copyLink()" aria-label="Copy page URL">Copy page URL</button>
+      <button class="ghost" onclick="toggleTheme()" aria-label="Toggle color theme">Toggle Theme</button>
+    </div>
+  </main>
+
+  <script>
+    function copyLink(){navigator.clipboard.writeText(location.href).then(()=>alert('Page URL copied to clipboard'))}
+    function toggleTheme(){
+      const r = document.documentElement;
+      if(r.style.getPropertyValue('--bg') === '#0f1724'){
+        r.style.setProperty('--bg','#f6f8fb');r.style.setProperty('--card','#ffffff');r.style.setProperty('--text','#0b1220');
+      } else {
+        r.style.setProperty('--bg','#0f1724');r.style.setProperty('--card','#0b1220');r.style.setProperty('--text','#e6eef6');
+      }
+    }
+  </script>
+</body>
+</html>
