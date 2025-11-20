@@ -6,81 +6,101 @@
   <title>Scott Turner Films</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <style>
-    :root{--bg:#0f1724;--card:#0b1220;--accent:#06b6d4;--text:#e6eef6}
-    *{box-sizing:border-box}
-    body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:linear-gradient(180deg,#071126 0%,var(--bg) 100%);color:var(--text)}
-    .container{width:min(720px,94vw);text-align:center;padding:32px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 6px 30px rgba(2,6,23,0.6)}
-    .avatar{width:120px;height:120px;border-radius:20px;display:block;margin:10px auto;object-fit:cover}
-    h1{margin:12px 0 6px;font-size:1.5rem}
-    p.desc{margin:0 0 18px;color:rgba(230,238,246,0.75)}
-    .links{display:grid;gap:12px;padding:10px 14px;max-width:520px;margin:0 auto}
-    .link-btn{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.005));border:1px solid rgba(255,255,255,0.03);color:var(--text);text-decoration:none;font-weight:600;transition:transform .12s ease, box-shadow .12s ease;cursor:pointer}
-    .link-btn:focus,.link-btn:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
-    .meta{font-size:.9rem;color:rgba(230,238,246,0.75)}
-    .icon{width:36px;height:36px;border-radius:8px;display:inline-grid;place-items:center;background:rgba(255,255,255,0.03)}
-    .row{display:flex;gap:10px;justify-content:center;margin-top:18px}
-    button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--text);cursor:pointer}
-    .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(15,23,36,0.9);color:#e6eef6;padding:10px 20px;border-radius:10px;opacity:0;transition:opacity .3s ease;pointer-events:none;font-size:.9rem;z-index:1000}
-    .toast.show{opacity:1}
-    @media (prefers-reduced-motion:reduce){.link-btn{transition:none}}
-/* --- MOBILE FIXES (Only apply on screens under 500px) --- */
-@media (max-width: 500px) {
-
-  /* Make container fit properly */
-  .container {
-    width: 92vw;
-    padding: 22px 16px;
-  }
-
-  /* Make the links box match container width */
-  .links {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0;
-  }
-
-  /* Make each button center + prevent clipping */
-  .link-btn {
-    width: 100%;
-    margin: 0 auto;
-    padding: 12px 14px;
-    font-size: 0.95rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;              /* allows wrapping instead of overflow */
-  }
-
-  /* Prevent text from pushing buttons too wide */
-  .link-btn > span {
-    min-width: 0;                 /* lets text shrink */
-  }
-
-  /* Do not cut off long text */
-  .link-btn span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  /* Resize icons on mobile */
-  .icon {
-    width: 32px;
-    height: 32px;
-  }
-
-  h1 {
-    font-size: 1.25rem;
-  }
-
-  /* Enable wrapping for bottom buttons */
-  .row {
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#06b6d4;
+  --text:#e6eef6;
+  --btn-bg:rgba(255,255,255,0.03);
+  --btn-border:rgba(255,255,255,0.06);
+  --meta:rgba(230,238,246,0.75);
 }
-  </style>
+
+/* GENERAL */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background:linear-gradient(180deg,#071126 0%,var(--bg) 100%);
+  color:var(--text);
+}
+.container{
+  width:min(720px,94vw);
+  text-align:center;
+  padding:32px;
+  border-radius:16px;
+  background:var(--card);
+  box-shadow:0 6px 30px rgba(2,6,23,0.6);
+}
+.avatar{width:120px;height:120px;border-radius:20px;display:block;margin:10px auto;object-fit:cover}
+h1{margin:12px 0 6px;font-size:1.5rem}
+p.desc{margin:0 0 18px;color:var(--meta)}
+.links{display:grid;gap:12px;padding:10px 14px;width:100%;margin:0 auto}
+.link-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 18px;
+  border-radius:12px;
+  background:var(--btn-bg);
+  border:1px solid var(--btn-border);
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+  transition:transform .12s ease, box-shadow .12s ease, background .3s ease, color .3s ease;
+  cursor:pointer;
+  width:100%;
+}
+.link-btn:focus,.link-btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+.meta{font-size:.9rem;color:var(--meta)}
+.icon{width:36px;height:36px;border-radius:8px;display:inline-grid;place-items:center;background:rgba(255,255,255,0.05)}
+.row{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+button.ghost{
+  background:var(--btn-bg);
+  border:1px solid var(--btn-border);
+  padding:8px 12px;
+  border-radius:10px;
+  color:var(--text);
+  cursor:pointer;
+  transition:background .3s ease, color .3s ease;
+}
+.toast{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(15,23,36,0.9);
+  color:#e6eef6;
+  padding:10px 20px;
+  border-radius:10px;
+  opacity:0;
+  transition:opacity .3s ease;
+  pointer-events:none;
+  font-size:.9rem;
+  z-index:1000
+}
+.toast.show{opacity:1}
+@media (prefers-reduced-motion:reduce){.link-btn{transition:none}}
+
+/* --- MOBILE FIXES (under 500px) --- */
+@media (max-width: 500px) {
+  .container {width: 92vw;padding:22px 16px;}
+  .links {width:100%;max-width:100%;margin:0 auto;padding:0;}
+  .link-btn {width:100%;margin:0 auto;padding:12px 14px;font-size:0.95rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+  .link-btn > span {min-width:0;}
+  .link-btn span {overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .icon {width:32px;height:32px;}
+  h1 {font-size:1.25rem;}
+  .row {flex-wrap:wrap;gap:8px;}
+}  </style>
 </head>
 <body>
   <main class="container" role="main">
@@ -141,13 +161,25 @@
     function copyLink(){navigator.clipboard.writeText(location.href).then(()=>showToast('Page URL copied!'))}
 
     function toggleTheme(){
-      const r = document.documentElement;
-      if(r.style.getPropertyValue('--bg') === '#0f1724'){
-        r.style.setProperty('--bg','#f6f8fb');r.style.setProperty('--card','#ffffff');r.style.setProperty('--text','#0b1220');
-      } else {
-        r.style.setProperty('--bg','#0f1724');r.style.setProperty('--card','#0b1220');r.style.setProperty('--text','#e6eef6');
-      }
-    }
+  const r = document.documentElement;
+  if(r.style.getPropertyValue('--bg') === '#0f1724'){
+    // LIGHT MODE
+    r.style.setProperty('--bg','#f6f8fb');
+    r.style.setProperty('--card','#ffffff');
+    r.style.setProperty('--text','#0b1220');
+    r.style.setProperty('--btn-bg','#e0e7ff');      // buttons lighter
+    r.style.setProperty('--btn-border','#a5b4fc');  // button border
+    r.style.setProperty('--meta','#475569');       // meta text darker
+  } else {
+    // DARK MODE
+    r.style.setProperty('--bg','#0f1724');
+    r.style.setProperty('--card','#0b1220');
+    r.style.setProperty('--text','#e6eef6');
+    r.style.setProperty('--btn-bg','rgba(255,255,255,0.03)');
+    r.style.setProperty('--btn-border','rgba(255,255,255,0.06)');
+    r.style.setProperty('--meta','rgba(230,238,246,0.75)');
+  }
+}
   </script>
 </body>
 </html>
