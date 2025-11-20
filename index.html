@@ -23,6 +23,40 @@
     .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(15,23,36,0.9);color:#e6eef6;padding:10px 20px;border-radius:10px;opacity:0;transition:opacity .3s ease;pointer-events:none;font-size:.9rem;z-index:1000}
     .toast.show{opacity:1}
     @media (prefers-reduced-motion:reduce){.link-btn{transition:none}}
+/* --- MOBILE FIXES (Only apply on screens under 500px) --- */
+@media (max-width: 500px) {
+
+  /* Container shrinks slightly so it doesn’t overflow */
+  .container {
+    width: 92vw;
+    padding: 22px 16px;
+  }
+
+  /* Buttons shrink properly */
+  .link-btn {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    word-wrap: break-word;
+    width: 100%;     /* ensures no overflow */
+  }
+
+  /* Icons scale better on small screens */
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Slightly reduce header text */
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  /* Row buttons wrap correctly */
+  .row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
   </style>
 </head>
 <body>
