@@ -31,13 +31,17 @@ body{
   background:linear-gradient(180deg,#071126 0%,var(--bg) 100%);
   color:var(--text);
 }
-.container{
+.container {
   width:min(720px,94vw);
   text-align:center;
   padding:32px;
   border-radius:16px;
   background:var(--card);
-  box-shadow:0 6px 30px rgba(2,6,23,0.6);
+  /* Dark shadow + subtle soft white glow */
+  box-shadow: 
+    0 6px 30px rgba(2,6,23,0.6),       /* original dark shadow */
+    0 0 20px rgba(255,255,255,0.06),    /* soft ambient white glow */
+    0 0 40px rgba(255,255,255,0.04);    /* larger, softer outer glow */
 }
 .avatar{width:120px;height:120px;border-radius:20px;display:block;margin:10px auto;object-fit:cover}
 h1{margin:12px 0 6px;font-size:1.5rem}
